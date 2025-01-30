@@ -21,11 +21,20 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+//app.use(cors());
 app.use(compression());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(
+  cors({
+    origin:'https://task-manager-ui-lac.vercel.app', // Replace with your frontend URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  })
+);
+app.options('*', cors()); // Enable preflight requests for all routes
+
 
 const __dirname = path.resolve(); // Set {__dirname} to current working directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
