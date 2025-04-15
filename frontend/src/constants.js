@@ -1,6 +1,6 @@
 // export const BASE_URL =
 // process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : '';
-export const BASE_URL = 'https://nilesh-marketplace.vercel.app';
+export const BASE_URL = 'https://nilesh-marketplace-api.vercel.app';
 export const PRODUCTS_URL = '/api/v1/products';
 export const UPLOAD_URL = '/api/v1/upload';
 export const USERS_URL = '/api/v1/users';
