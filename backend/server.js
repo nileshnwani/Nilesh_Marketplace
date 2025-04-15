@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin:'https://nilesh-marketplace-ui.vercel.app', // Replace with your frontend URL
+    origin:'https://nilesh-marketplace.vercel.app', // Replace with your frontend URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   })
 );
