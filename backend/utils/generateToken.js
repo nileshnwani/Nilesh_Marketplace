@@ -6,10 +6,11 @@ export const generateToken = (req, res, userId) => {
     expiresIn: req.body.remember ? 365 * 24 + 'h' : '24h'
   });
 
- // Setting the JWT as an HTTP-only cookie for enhanced security
+  // Setting the JWT as an HTTP-only cookie for enhanced security
   res.cookie('jwt', token, {
     httpOnly: true,
     secure: process.env.NODE_ENV !== 'development',
     sameSite: 'strict',
     maxAge: req.body.remember ? 365 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000
   });
+};
