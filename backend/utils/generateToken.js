@@ -4,11 +4,11 @@ export const generateToken = (req, res, userId) => {
   const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
     expiresIn: req.body.remember ? 365 * 24 + 'h' : '24h'
   });
+res.cookie('jwt', token, {
+  httpOnly: true,
+  secure: true,
+  sameSite: 'None',  // Required for cross-origin cookies
+  maxAge: req.body.remember ? 365 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000
+});
 
-  res.cookie('jwt', token, {
-    httpOnly: true,
-    secure: true, // ✅ Force secure cookies even in development
-    sameSite: 'strict',
-    maxAge: req.body.remember ? 365 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000
-  });
 };
